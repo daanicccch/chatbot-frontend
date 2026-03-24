@@ -1,26 +1,156 @@
 @import "tailwindcss";
 
-:root {
+:root,
+html[data-theme="light"] {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111827;
+  --muted: #6b7280;
+  --muted-foreground: #6b7280;
+  --panel: #f9fafb;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --primary: #111827;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #111827;
+  --accent: #f3f4f6;
+  --accent-foreground: #111827;
+  --destructive: #991b1b;
+  --destructive-foreground: #ffffff;
+  --border: #e5e7eb;
+  --input: #d1d5db;
+  --ring: #111827;
+  --radius: 0.75rem;
+  --app-bg: #ffffff;
+  --app-sidebar: #f7f7f8;
+  --app-surface: #ffffff;
+  --app-surface-muted: #fafafa;
+  --app-surface-subtle: #f3f4f6;
+  --app-user-bubble: #f4f4f4;
+  --app-border: #e5e7eb;
+  --app-border-strong: #d1d5db;
+  --app-text: #111827;
+  --app-muted: #6b7280;
+  --app-muted-soft: #9ca3af;
+  --app-inverse: #111827;
+  --app-inverse-text: #ffffff;
+  --app-hover: #f9fafb;
+  --app-overlay: rgba(0, 0, 0, 0.25);
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  --background: #212121;
+  --foreground: #ececec;
+  --muted: #2a2a2a;
+  --muted-foreground: #a1a1aa;
+  --panel: #2a2a2a;
+  --card: #212121;
+  --card-foreground: #ececec;
+  --popover: #212121;
+  --popover-foreground: #ececec;
+  --primary: #f5f5f5;
+  --primary-foreground: #171717;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #ececec;
+  --accent: #2a2a2a;
+  --accent-foreground: #ececec;
+  --destructive: #991b1b;
+  --destructive-foreground: #ffffff;
+  --border: #3f3f46;
+  --input: #52525b;
+  --ring: #ececec;
+  --radius: 0.75rem;
+  --app-bg: #212121;
+  --app-sidebar: #171717;
+  --app-surface: #212121;
+  --app-surface-muted: #171717;
+  --app-surface-subtle: #2a2a2a;
+  --app-user-bubble: #303030;
+  --app-border: #3f3f46;
+  --app-border-strong: #52525b;
+  --app-text: #ececec;
+  --app-muted: #a1a1aa;
+  --app-muted-soft: #71717a;
+  --app-inverse: #f5f5f5;
+  --app-inverse-text: #171717;
+  --app-hover: #262626;
+  --app-overlay: rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius: 0.75rem;
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+  height: 100%;
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  min-height: 100%;
+  background: var(--app-bg);
+  color: var(--app-text);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--app-text) 14%, transparent);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--app-muted) 34%, transparent);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--app-muted) 48%, transparent);
 }
